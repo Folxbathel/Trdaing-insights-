@@ -3,413 +3,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPARTAN FX | Premium Trading Analysis</title>
-    
-    <!-- FontAwesome Icons & Google Fonts -->
+    <title>XAUUSDT TRADING INSIGHTS</title>
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: {
-                            100: '#FDF4DC',
-                            300: '#F7BA2A',
-                            400: '#E5AF28',
-                            500: '#E2A014',
-                            600: '#B87C09',
-                            800: '#5C3E04',
-                            900: '#181204',
-                        },
-                        dark: {
-                            base: '#050505',
-                            card: '#0D0D0D',
-                            surface: '#121212',
-                            border: '#222222'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        serif: ['Cinzel', 'serif']
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            user-select: none;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background-color: #030303;
-            background-image: 
-                radial-gradient(circle at 50% 0%, rgba(226, 160, 20, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 100% 100%, rgba(184, 124, 9, 0.08) 0%, transparent 40%);
+            background-color: #000000;
             color: #ffffff;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px 12px;
-            overflow-x: hidden;
+            min-height: 100vh;
+            padding: 15px;
         }
 
-        /* Glassmorphism & Gold Glows */
-        .gold-glow {
-            box-shadow: 0 0 35px rgba(226, 160, 20, 0.25);
+        .main-card {
+            max-width: 420px;
+            width: 100%;
+            background: linear-gradient(180deg, #181204 0%, #0a0a0a 100%);
+            border: 1px solid rgba(226, 160, 20, 0.3);
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 10px 40px rgba(226, 160, 20, 0.2);
+            text-align: center;
         }
 
-        .gold-border-glow {
-            border: 1px solid rgba(226, 160, 20, 0.35);
+        /* Header & Title */
+        .logo-icon {
+            font-size: 38px;
+            color: #e2a014;
+            margin-bottom: 15px;
+        }
+
+        .title {
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            color: #e2a014;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .title span {
+            color: #f7ba2a;
+        }
+
+        .tag-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .tag-badge .line {
+            height: 1px;
+            width: 25px;
+            background-color: #e2a014;
+        }
+
+        .tag-badge .tag-text {
+            font-size: 11px;
+            font-weight: 700;
+            color: #e2a014;
+            letter-spacing: 1.5px;
+        }
+
+        /* Content */
+        .description {
+            font-size: 15px;
+            color: #d1d1d1;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .highlight {
+            color: #e2a014;
+            font-weight: bold;
+        }
+
+        /* Telegram Main Button */
+        .subscribe-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: linear-gradient(90deg, #e2a014 0%, #f7ba2a 100%);
+            color: #000000;
+            font-size: 18px;
+            font-weight: 800;
+            padding: 16px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 0 20px rgba(226, 160, 20, 0.4);
+            margin-bottom: 25px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .subscribe-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .subscribe-btn i {
+            font-size: 22px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background-color: #121212;
+            border: 1px solid #222222;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: left;
+        }
+
+        .stat-title {
+            display: block;
+            font-size: 11px;
+            color: #777777;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .stat-num {
+            display: block;
+            font-size: 24px;
+            font-weight: 900;
+            color: #ffffff;
+        }
+
+        .glow-gold {
+            color: #e2a014;
+        }
+
+        .stat-sub {
+            font-size: 12px;
+            color: #666666;
+        }
+
+        /* Custom WhatsApp Advertisement Button */
+        .ad-whatsapp-btn {
+            grid-column: span 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #121212;
+            border: 1px solid #222222;
+            border-radius: 12px;
+            padding: 14px;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
             transition: all 0.3s ease;
         }
 
-        .gold-border-glow:hover {
-            border-color: rgba(247, 186, 42, 0.75);
-            box-shadow: 0 0 20px rgba(226, 160, 20, 0.3);
+        .ad-whatsapp-btn i {
+            font-size: 18px;
+            color: #25d366;
         }
 
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #FFF0BD 0%, #F7BA2A 50%, #B87C09 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .ad-whatsapp-btn:hover {
+            border-color: rgba(226, 160, 20, 0.5);
+            background-color: #18150c;
         }
 
-        .gold-button {
-            background: linear-gradient(135deg, #F7BA2A 0%, #E2A014 50%, #B87C09 100%);
-            background-size: 200% auto;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Risk Warning Box */
+        .risk-card {
+            background-color: #11100c;
+            border: 1px solid rgba(226, 160, 20, 0.3);
+            border-radius: 12px;
+            padding: 18px;
+            text-align: left;
+            margin-bottom: 20px;
         }
 
-        .gold-button:hover {
-            background-position: right center;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(226, 160, 20, 0.45);
+        .risk-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #e2a014;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
         }
 
-        .gold-button:active {
-            transform: translateY(0);
+        .risk-text {
+            font-size: 12px;
+            color: #888888;
+            line-height: 1.5;
         }
 
-        /* Animated Pulse Halo */
-        @keyframes haloPulse {
-            0% { transform: scale(0.95); opacity: 0.5; }
-            50% { transform: scale(1.05); opacity: 0.8; }
-            100% { transform: scale(0.95); opacity: 0.5; }
-        }
-
-        .halo-animation {
-            animation: haloPulse 4s infinite ease-in-out;
-        }
-
-        /* Live Indicator Beacon */
-        @keyframes liveBeacon {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
-        }
-
-        .live-dot {
-            animation: liveBeacon 2s infinite;
-        }
-
-        /* Shimmer effect */
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        .shimmer-badge {
-            background: linear-gradient(90deg, rgba(226,160,20,0.1) 0%, rgba(247,186,42,0.35) 50%, rgba(226,160,20,0.1) 100%);
-            background-size: 200% 100%;
-            animation: shimmer 3s infinite linear;
-        }
-
-        /* Custom Scrollbar for inner modals */
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0d0d0d;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #e2a014;
-            border-radius: 4px;
+        .footer-bottom {
+            font-size: 11px;
+            color: #444444;
         }
     </style>
 </head>
 <body>
 
-    <!-- Main Card Container -->
-    <div class="relative max-w-[440px] w-full bg-gradient-to-b from-[#161106] via-[#0b0b0b] to-[#050505] border border-gold-500/30 rounded-3xl p-6 sm:p-8 gold-glow overflow-hidden transition-all duration-300">
+    <div class="main-card">
         
-        <!-- Subtle Animated Ambient Light Background -->
-        <div class="absolute -top-24 -left-24 w-48 h-48 bg-gold-500/20 blur-3xl rounded-full pointer-events-none halo-animation"></div>
-        <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-gold-600/15 blur-3xl rounded-full pointer-events-none halo-animation"></div>
-
-        <!-- Top Utility Bar: Share, Sound Toggle & Live Status -->
-        <div class="flex justify-between items-center mb-6">
-            <div class="flex items-center gap-2 bg-dark-card/80 border border-green-500/30 px-3 py-1 rounded-full backdrop-blur-md">
-                <span class="w-2 h-2 rounded-full bg-green-500 live-dot"></span>
-                <span class="text-[11px] font-bold text-green-400 uppercase tracking-wider">LIVE SIGNALS</span>
+        <!-- Header / Logo Area -->
+        <header class="header">
+            <div class="logo-icon">
+                <i class="fa-solid fa-sack-dollar"></i>
             </div>
+            <h1 class="title">XAUUSDT TRADING INSIGHTS</h1>
             
-            <div class="flex items-center gap-2">
-                <button id="calc-toggle-btn" title="Open Profit Calculator" class="w-9 h-9 flex items-center justify-center rounded-full bg-dark-surface border border-gold-500/20 text-gold-500 hover:border-gold-500/60 hover:bg-gold-500/10 transition-all text-xs">
-                    <i class="fa-solid fa-calculator"></i>
-                </button>
-                <button id="share-btn" title="Copy Direct Channel Link" class="w-9 h-9 flex items-center justify-center rounded-full bg-dark-surface border border-gold-500/20 text-gold-500 hover:border-gold-500/60 hover:bg-gold-500/10 transition-all text-xs">
-                    <i class="fa-solid fa-share-nodes"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Header & Branding Area -->
-        <header class="text-center relative z-10 mb-6">
-            <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-gold-500/20 to-transparent border border-gold-500/40 mb-4 shadow-lg shadow-gold-500/10 group cursor-pointer hover:rotate-3 transition-transform">
-                <i class="fa-solid fa-sack-dollar text-4xl gold-gradient-text group-hover:scale-110 transition-transform duration-300"></i>
-            </div>
-            
-            <h1 class="font-serif text-3xl sm:text-4xl font-extrabold tracking-wider uppercase leading-tight">
-                <span class="gold-gradient-text drop-shadow">SPARTAN FX</span>
-            </h1>
-
-            <!-- Subtitle Badge Bar -->
-            <div class="flex items-center justify-center gap-3 mt-3 mb-1">
-                <span class="h-[1px] w-6 bg-gradient-to-r from-transparent to-gold-500"></span>
-                <span class="shimmer-badge text-[10px] sm:text-[11px] font-extrabold text-gold-300 tracking-[0.2em] px-3 py-0.5 rounded-full border border-gold-500/30 uppercase">
-                    PREMIUM TRADING ANALYSIS
-                </span>
-                <span class="h-[1px] w-6 bg-gradient-to-l from-transparent to-gold-500"></span>
+            <div class="tag-badge">
+                <span class="line"></span>
+                <span class="tag-text">PREMIUM TRADING ANALYSIS</span>
+                <span class="line"></span>
             </div>
         </header>
 
-        <!-- Live Gold (XAU/USD) Ticker Bar -->
-        <div class="bg-dark-card/90 border border-gold-500/20 rounded-xl p-3 mb-6 flex items-center justify-between text-xs backdrop-blur-sm">
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-chart-line text-gold-500"></i>
-                <span class="font-bold tracking-wider text-gray-300">XAU/USD</span>
-            </div>
-            <div class="flex items-center gap-3">
-                <span id="gold-price" class="font-mono font-bold text-white text-sm">2,734.50</span>
-                <span id="gold-change" class="text-[11px] font-semibold text-green-400 bg-green-500/10 border border-green-500/20 px-1.5 py-0.5 rounded">
-                    +0.42% <i class="fa-solid fa-caret-up"></i>
-                </span>
-            </div>
-        </div>
-
-        <!-- Main Content & CTA -->
-        <div class="text-center relative z-10">
-            <p class="text-sm text-gray-300 leading-relaxed mb-6 font-normal">
-                Professional <span class="text-gold-400 font-bold border-b border-gold-500/40">XAU/USD</span> market analysis, institutional trading insights, & high-accuracy signals delivered directly to Telegram.
+        <!-- Main Body -->
+        <div class="content">
+            <p class="description">
+                Professional <span class="highlight">XAU/USD</span> market analysis, cutting-edge trading insights, and premium educational content delivered directly on Telegram.
             </p>
 
-            <!-- Telegram Primary CTA Button -->
-            <a href="tg://resolve?domain=spartantrading4x" id="telegram-btn" target="_blank" 
-               class="gold-button w-full flex items-center justify-center gap-3 text-black font-extrabold text-base sm:text-lg py-4 px-6 rounded-2xl shadow-xl cursor-pointer group mb-6 transition-all duration-300">
-                <span>SUBSCRIBE NOW</span>
-                <i class="fa-brands fa-telegram text-2xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+            <!-- Direct Telegram Link -->
+            <a href="https://t.me/Dailymarketupdate80" target="_blank" class="subscribe-btn" id="telegram-btn">
+                Subscribe Now <i class="fa-brands fa-telegram"></i>
             </a>
         </div>
 
-        <!-- Interactive Stats Grid -->
-        <div class="grid grid-cols-2 gap-3 mb-6">
-            <!-- Community Stat Card -->
-            <div class="bg-dark-card border border-dark-border hover:border-gold-500/30 rounded-xl p-3.5 text-left transition-all">
-                <span class="block text-[10px] font-bold text-gray-500 tracking-wider mb-1 uppercase">COMMUNITY</span>
-                <div class="flex items-baseline gap-1">
-                    <span id="counter-subscribers" class="text-xl sm:text-2xl font-black text-white font-mono">11,500</span>
-                    <span class="text-gold-500 text-xs font-bold">+</span>
-                </div>
-                <span class="text-[11px] text-gray-400">Active Subscribers</span>
+        <!-- Grid Cards (Stats & WhatsApp Ad Button) -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-title">COMMUNITY</span>
+                <span class="stat-num">11.5K</span>
+                <span class="stat-sub">Subscribers</span>
             </div>
 
-            <!-- Platform Live Stat Card -->
-            <div class="bg-dark-card border border-dark-border hover:border-gold-500/30 rounded-xl p-3.5 text-left transition-all">
-                <span class="block text-[10px] font-bold text-gray-500 tracking-wider mb-1 uppercase">WIN RATE</span>
-                <span class="text-xl sm:text-2xl font-black gold-gradient-text font-mono">87.4%</span>
-                <span class="text-[11px] text-gray-400">Monthly Avg</span>
+            <div class="stat-card">
+                <span class="stat-title">PLATFORM</span>
+                <span class="stat-num glow-gold">24/7</span>
+                <span class="stat-sub">Live Analysis</span>
             </div>
 
-            <!-- WhatsApp Advertisement Custom Button -->
-            <a href="https://wa.me/923128435671?text=Hello,%20I%20want%20to%20contact%20for%20Advertisement" 
-               target="_blank" 
-               class="col-span-2 bg-dark-card border border-dark-border hover:border-gold-500/40 hover:bg-gold-500/5 rounded-xl p-3.5 flex items-center justify-between text-xs font-bold text-gray-200 transition-all duration-300 group">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-lg bg-green-500/10 border border-green-500/30 flex items-center justify-center text-green-400 group-hover:scale-105 transition-transform">
-                        <i class="fa-brands fa-whatsapp text-lg"></i>
-                    </div>
-                    <span>BOOK ADVERTISEMENT</span>
-                </div>
-                <i class="fa-solid fa-chevron-right text-gray-500 group-hover:text-gold-500 group-hover:translate-x-1 transition-all"></i>
+            <!-- WhatsApp Advertisement Button -->
+            <a href="https://wa.me/923128435671?text=Hello,%20I%20want%20to%20contact%20for%20Advertisement" target="_blank" class="ad-whatsapp-btn">
+                CLICK for Advertisement <i class="fa-brands fa-whatsapp"></i>
             </a>
         </div>
 
-        <!-- Hidden Interactive Calculator Drawer (Collapsible) -->
-        <div id="calculator-drawer" class="hidden bg-dark-surface/90 border border-gold-500/30 rounded-2xl p-4 mb-6 backdrop-blur-md transition-all duration-300">
-            <div class="flex justify-between items-center mb-3">
-                <span class="text-xs font-bold text-gold-400 uppercase tracking-wider flex items-center gap-1.5">
-                    <i class="fa-solid fa-calculator"></i> Gold Pip Profit Calculator
-                </span>
-                <button id="calc-close" class="text-gray-400 hover:text-white text-xs"><i class="fa-solid fa-xmark"></i></button>
+        <!-- Footer / Risk Warning -->
+        <div class="risk-card">
+            <div class="risk-header">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Risk Warning</span>
             </div>
-            
-            <div class="space-y-3 text-left">
-                <div>
-                    <label class="text-[11px] text-gray-400 block mb-1">Lot Size (Standard Lots)</label>
-                    <input type="number" id="calc-lots" value="0.10" step="0.01" min="0.01" class="w-full bg-dark-card border border-dark-border text-white text-xs rounded-lg p-2.5 outline-none focus:border-gold-500 font-mono">
-                </div>
-                <div>
-                    <label class="text-[11px] text-gray-400 block mb-1">Gain in Pips</label>
-                    <input type="number" id="calc-pips" value="50" step="5" min="1" class="w-full bg-dark-card border border-dark-border text-white text-xs rounded-lg p-2.5 outline-none focus:border-gold-500 font-mono">
-                </div>
-                <div class="bg-gold-500/10 border border-gold-500/20 rounded-lg p-2.5 flex justify-between items-center">
-                    <span class="text-xs text-gray-300">Estimated Profit:</span>
-                    <span id="calc-result" class="text-sm font-extrabold text-gold-400 font-mono">$50.00 USD</span>
-                </div>
-            </div>
+            <p class="risk-text">
+                Trading Forex and Gold involves substantial risk and may not be suitable for every investor. Past performance does not guarantee future results. Always trade responsibly and only risk money you can afford to lose.
+            </p>
         </div>
 
-        <!-- Risk Warning Interactive Box -->
-        <div class="bg-dark-card/60 border border-gold-500/20 rounded-2xl p-4 text-left transition-all mb-4">
-            <button id="risk-toggle-btn" class="w-full flex items-center justify-between text-xs font-bold text-gold-400 outline-none">
-                <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-triangle-exclamation text-gold-500"></i>
-                    <span>RISK WARNING & DISCLAIMER</span>
-                </div>
-                <i id="risk-icon" class="fa-solid fa-chevron-down text-gray-500 text-xs transition-transform"></i>
-            </button>
-            
-            <div id="risk-content" class="hidden mt-3 text-[11px] text-gray-400 leading-relaxed border-t border-dark-border/60 pt-2.5">
-                Trading Foreign Exchange (Forex) and Precious Metals (Gold/XAUUSD) carries a high level of risk and may not be suitable for all investors. Leveraged trading can result in total loss of invested capital. Past performance is not indicative of future results.
-            </div>
-        </div>
-
-        <!-- Footer Info -->
-        <footer class="text-center text-[11px] text-gray-500 font-medium">
-            <p>&copy; <span id="current-year">2026</span> SPARTAN FX. All rights reserved.</p>
+        <!-- Copyright Footer -->
+        <footer class="footer-bottom">
+            <p>&copy; 2026 XAUUSDT TRADING INSIGHTS. All rights reserved.</p>
         </footer>
-
-        <!-- Toast Notification Pop-up -->
-        <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gold-500 text-black text-xs font-bold px-4 py-2 rounded-full shadow-2xl opacity-0 pointer-events-none transition-opacity duration-300 z-50 flex items-center gap-2">
-            <i class="fa-solid fa-check-circle"></i>
-            <span id="toast-msg">Link Copied!</span>
-        </div>
 
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Dynamic Year Update
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-
-            // 2. Animated Counter for Subscribers
-            const counterEl = document.getElementById('counter-subscribers');
-            const targetCount = 11500;
-            let currentCount = 11000;
-            const step = Math.ceil((targetCount - currentCount) / 40);
-
-            const counterInterval = setInterval(() => {
-                currentCount += step;
-                if (currentCount >= targetCount) {
-                    currentCount = targetCount;
-                    clearInterval(counterInterval);
-                }
-                counterEl.textContent = currentCount.toLocaleString();
-            }, 30);
-
-            // 3. Live Simulated XAU/USD Gold Price Ticker
-            const goldPriceEl = document.getElementById('gold-price');
-            const goldChangeEl = document.getElementById('gold-change');
-            let basePrice = 2734.50;
-
-            setInterval(() => {
-                const delta = (Math.random() - 0.48) * 0.8;
-                basePrice += delta;
-                goldPriceEl.textContent = basePrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-                
-                if (delta >= 0) {
-                    goldChangeEl.className = "text-[11px] font-semibold text-green-400 bg-green-500/10 border border-green-500/20 px-1.5 py-0.5 rounded";
-                    goldChangeEl.innerHTML = `+0.48% <i class="fa-solid fa-caret-up"></i>`;
-                } else {
-                    goldChangeEl.className = "text-[11px] font-semibold text-red-400 bg-red-500/10 border border-red-500/20 px-1.5 py-0.5 rounded";
-                    goldChangeEl.innerHTML = `-0.12% <i class="fa-solid fa-caret-down"></i>`;
-                }
-            }, 3500);
-
-            // 4. Share / Copy Link Functionality
-            const shareBtn = document.getElementById('share-btn');
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toast-msg');
-
-            shareBtn.addEventListener('click', () => {
-                const shareUrl = "https://t.me/Dailymarketupdate80";
-                
-                // Fallback copy execution
-                const dummy = document.createElement('input');
-                document.body.appendChild(dummy);
-                dummy.value = shareUrl;
-                dummy.select();
-                document.execCommand('copy');
-                document.body.removeChild(dummy);
-
-                // Show Toast
-                toastMsg.textContent = "Telegram Channel Link Copied!";
-                toast.classList.remove('opacity-0', 'pointer-events-none');
-                setTimeout(() => {
-                    toast.classList.add('opacity-0', 'pointer-events-none');
-                }, 2500);
-            });
-
-            // 5. Toggle Risk Disclaimer Accordion
-            const riskToggleBtn = document.getElementById('risk-toggle-btn');
-            const riskContent = document.getElementById('risk-content');
-            const riskIcon = document.getElementById('risk-icon');
-
-            riskToggleBtn.addEventListener('click', () => {
-                riskContent.classList.toggle('hidden');
-                riskIcon.classList.toggle('rotate-180');
-            });
-
-            // 6. Gold Profit Calculator Drawer Toggle & Calculation Logic
-            const calcToggleBtn = document.getElementById('calc-toggle-btn');
-            const calcCloseBtn = document.getElementById('calc-close');
-            const calcDrawer = document.getElementById('calculator-drawer');
-            const calcLots = document.getElementById('calc-lots');
-            const calcPips = document.getElementById('calc-pips');
-            const calcResult = document.getElementById('calc-result');
-
-            calcToggleBtn.addEventListener('click', () => {
-                calcDrawer.classList.toggle('hidden');
-            });
-
-            calcCloseBtn.addEventListener('click', () => {
-                calcDrawer.classList.add('hidden');
-            });
-
-            function updateProfit() {
-                const lots = parseFloat(calcLots.value) || 0;
-                const pips = parseFloat(calcPips.value) || 0;
-                // Standard Gold Lot: 1 pip (0.10 price move) = $10 on 1.0 lot
-                const profit = lots * pips * 10;
-                calcResult.textContent = `$${profit.toFixed(2)} USD`;
-            }
-
-            calcLots.addEventListener('input', updateProfit);
-            calcPips.addEventListener('input', updateProfit);
-        });
-    </script>
 </body>
 </html>
